@@ -1,0 +1,297 @@
+/* ========== HEADER ET BANNIÈRE ========== */
+
+/* Bande rouge en haut de la page */
+.top-bar {
+    width: 100%;
+    height: 100px;
+    background-color: red; /* Couleur de fond unie */
+    position: fixed; /* Fixé en haut de la page */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* S'assure que la bande reste au-dessus des autres éléments */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour donner un léger effet de profondeur */
+}
+
+/* ========== GESTION DU BODY ========== */
+
+body {
+    font-family: 'Kanit', sans-serif; /* Police d'écriture principale */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Organisation verticale des éléments */
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4; /* Couleur de fond claire */
+    height: 100vh; /* Hauteur de la fenêtre visible */
+}
+
+/* Image de fond */
+body {
+    background: url('images/sports.avif');
+    position: relative;
+}
+
+/* Ajout d'un effet sombre sur l'image de fond pour améliorer la lisibilité du texte */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1; /* Place le calque derrière le contenu */
+}
+
+/* ========== TITRE PRINCIPAL ========== */
+
+/* Titre centré sur la bande rouge */
+.title {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); /* Centre le texte horizontalement */
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    z-index: 1100; /* S'assure que le titre reste visible */
+}
+
+/* ========== BOUTON D'ACCUEIL ========== */
+
+/* Bouton de retour à la page d'accueil */
+.btn-home {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    z-index: 1100;
+    transition: transform 0.2s;
+}
+
+.btn-home:hover {
+    transform: scale(1.1); /* Effet de zoom léger au survol */
+}
+
+/* Icône du bouton d'accueil */
+.btn-home img {
+    width: 40px;
+    height: 40px;
+}
+
+/* ========== SECTION DE DESCRIPTION DU QUIZ ========== */
+
+.quiz-description {
+    text-align: center;
+    padding: 30px;
+    background-color: #f8f9fa; /* Fond légèrement gris */
+}
+
+/* Texte de description */
+.quiz-description p {
+    font-size: 18px;
+}
+
+/* Bouton pour démarrer le quiz */
+.btn-start {
+    display: inline-block;
+    background-color: rgb(12, 233, 12);
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn-start:hover {
+    background-color: rgb(4, 163, 4);
+}
+
+/* ========== CONTENEUR DU QUIZ ========== */
+
+.quiz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+/* ========== BOÎTE DU QUIZ ========== */
+
+.quiz-box {
+    background-color: red;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.quiz-box:hover {
+    transform: scale(1.02);
+}
+
+/* ========== BOUTONS GÉNÉRIQUES ========== */
+
+button { 
+    background-color: rgb(12, 233, 12);
+    color: white; 
+    padding: 12px 20px; 
+    border: none; 
+    border-radius: 8px; 
+    font-size: 18px; 
+    cursor: pointer; 
+    margin-top: 15px; 
+    transition: background 0.3s, transform 0.2s; 
+}
+
+button:hover {
+    background-color: rgb(4, 163, 4);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Liste des réponses */
+ul {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Style des boutons de réponses */
+button.answer {
+    font-family: 'Kanit', sans-serif;
+    width: 100%;
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+button.answer:hover {
+    background-color: #cec7c7;
+    border-color: #cec7c7;
+}
+
+button.answer.selected {
+    background-color: #cec7c7;
+    border-color: #cec7c7;
+}
+
+/* ========== AFFICHAGE DU SCORE ========== */
+
+.score-container {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Messages de résultat */
+.result-message {
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+    font-weight: bold;
+}
+
+.result-message.correct {
+    background-color: rgb(12, 233, 12);
+    color: white;
+}
+
+.result-message.incorrect {
+    background-color: red;
+    color: white;
+}
+
+/* Barre de progression */
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background-color: #ff0000;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    transition: width 1s linear;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Adaptation pour tablettes et écrans moyens */
+@media (max-width: 768px) {
+    .quiz-box {
+        width: 90%;
+        padding: 20px;
+    }
+    .title {
+        font-size: 20px;
+        top: 30px;
+    }
+    .btn-home img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.quiz-box {
+    width: 90%;
+    padding: 15px;
+}
+
+button {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Adaptation pour petits écrans */
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 18px;
+    }
+
+    .btn-home img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .quiz-box {
+        width: 95%;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
